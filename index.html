@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabled Wolf</title>
+    <meta name="description" content="Fabled Wolf - A whisper in the mist">
+
+    <!-- Preload the background image for instant load -->
+    <link rel="preload" as="image" href="assets/wolf.webp">
+
+    <!-- Google Fonts - Brush style for title, clean sans-serif for haiku -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&family=Zen+Kaku+Gothic+New:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Zen Kaku Gothic New', sans-serif;
+            background-color: #1a1a1a;
+            color: #f5f5f0;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/wolf.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .haiku {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            line-height: 2.2;
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+            opacity: 0.95;
+        }
+
+        .haiku p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+
+    <main class="content">
+        <h1 class="title">Fabled Wolf</h1>
+        <div class="haiku" id="haiku"></div>
+    </main>
+
+    <script>
+        const haikus = [
+            ["Through ancient mist glides", "a shadow with knowing eyes", "the moon holds its breath"],
+            ["Beneath pine shadows", "forgotten legends still hunt", "where silence has teeth"],
+            ["Silver breath rises", "through forests older than names", "the pack remembers"],
+            ["One paw on the path", "between this world and the next", "the guardian waits"],
+            ["Fog curls through the pines", "a howl echoes then fades", "the mountain listens"],
+            ["Winter stars witness", "what moves beneath bare branches", "older than the snow"],
+            ["The last ember dies", "yet golden eyes still linger", "watching from the dark"],
+            ["No trail left behind", "only the scent of legend", "drifting through the trees"]
+        ];
+
+        const haiku = haikus[Math.floor(Math.random() * haikus.length)];
+        document.getElementById('haiku').innerHTML = haiku.map(line => `<p>${line}</p>`).join('');
+    </script>
+</body>
+</html>
